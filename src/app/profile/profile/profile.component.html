@@ -1,0 +1,58 @@
+<button mat-button color="primary" type="button" class="flex justify-center align-center gap-1"  [routerLink]="['/home']">
+    Go back
+</button>
+
+<h2>Personal Info</h2>
+<div *ngIf="patient$()" class="flex flex-column justify-center align-start mobile:align-center gap-4">
+    <ng-container
+            [ngTemplateOutlet]="infoField"
+            [ngTemplateOutletContext]="{ $implicit: 'First name', fieldValue: patient$().firstname }"
+    />
+    <ng-container
+            [ngTemplateOutlet]="infoField"
+            [ngTemplateOutletContext]="{ $implicit: 'Last name', fieldValue: patient$().lastname }"
+    />
+    <ng-container
+            [ngTemplateOutlet]="infoField"
+            [ngTemplateOutletContext]="{ $implicit: 'email', fieldValue: patient$().email }"
+    />
+</div>
+<hr class="divider"/>
+
+<h2>Medical Info</h2>
+<div class="flex flex-row mobile:flex-column justify-center gap-4">
+    <ng-container
+            *ngIf="patient$().heart_rate"
+            [ngTemplateOutlet]="medicalInfoCard"
+            [ngTemplateOutletContext]="{ $implicit: 'Heart Rate', fieldValue: patient$().heart_rate }"
+    />
+    <ng-container
+            *ngIf="patient$().sys_blood_pressure"
+            [ngTemplateOutlet]="medicalInfoCard"
+            [ngTemplateOutletContext]="{ $implicit: 'SYS Blood Pressure', fieldValue: patient$().sys_blood_pressure }"
+    />
+    <ng-container
+            *ngIf="patient$().dia_blood_pressure"
+            [ngTemplateOutlet]="medicalInfoCard"
+            [ngTemplateOutletContext]="{ $implicit: 'DIA Blood Pressure', fieldValue: patient$().dia_blood_pressure }"
+    />
+</div>
+
+<ng-template #infoField let-fieldName let-fieldValue="fieldValue">
+    <div class="flex flex-column justify-center align-start mobile:align-center gap-3">
+        <h4 class="font-bold m-0">{{fieldName}}</h4>
+        <p class="m-0">{{fieldValue}}</p>
+    </div>
+</ng-template>
+
+<ng-template #medicalInfoCard let-fieldName let-fieldValue="fieldValue">
+    <div class="flex flex-column justify-center align-center gap-3 medical-info-card">
+        <h4 class="font-bold m-0">{{fieldName}}</h4>
+        <p class="flex justify-center align-center gap-1">
+<span class="material-symbols-outlined">
+favorite
+</span>
+            {{fieldValue}}
+        </p>
+    </div>
+</ng-template>

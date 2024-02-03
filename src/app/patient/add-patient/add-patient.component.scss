@@ -1,0 +1,22 @@
+.patient-form-container {
+  padding: 16px;
+  > div {
+    margin-bottom: 16px !important;
+  }
+}
+
+.dialog-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+
+  @media screen and (max-width: 900px){
+    min-width: 300px;
+  }
+}

@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="login">
+  <h2>Health Monitor App</h2>
+  <div class="flex flex-column justify-center gap-4">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username" placeholder="Enter your username">
+    </mat-form-field>
+
+  </div>
+  <div class="flex flex-column justify-center gap-4">
+    <mat-form-field>
+    <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Enter your password">
+    </mat-form-field>
+  </div>
+  <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          [disabled]="!form.valid">Login</button>
+</form>

@@ -1,0 +1,28 @@
+<button mat-flat-button color="primary" class="add-patient-button" (click)="onAddPatient()">
+  Add patient
+</button>
+
+<ng-container *ngIf="patients$()">
+  <div class="flex flex-row justify-between w-full mobile:flex-column mobile:gap-3">
+    <div class="patient-card" *ngFor="let patient of patients$()">
+      <h4 class="font-bold">
+      {{ patient.firstname }} {{ patient.lastname }}
+      </h4>
+      <p *ngIf="patient.heart_rate">
+        <span class="font-bold">Heart Rate</span>
+        {{patient.heart_rate}}
+      </p>
+      <p *ngIf="patient.dia_blood_pressure">
+        <span class="font-bold">Blood Pressure</span>
+        {{patient.sys_blood_pressure}} / {{patient.dia_blood_pressure}}
+      </p>
+      <button mat-stroked-button color="primary" class="profile-button" [routerLink]="['../profile', patient.patient_id]">Profile</button>
+    </div>
+  </div>
+
+  <mat-paginator
+          (page)="handlePageChange($event)"
+          [length]="totalElements$()"
+          [pageSize]="loadList$.getValue().limit"
+  />
+</ng-container>

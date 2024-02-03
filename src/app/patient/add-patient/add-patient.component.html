@@ -1,0 +1,70 @@
+<div class="patient-form-container">
+    <div mat-dialog-title class="flex flex-row w-full justify-between align-center">
+        <h4 class="mb-0">Add new patient</h4>
+        <button mat-icon-button color="basic" type="button" [mat-dialog-close]="null">
+            <span class="material-symbols-outlined">
+                close
+            </span>
+        </button>
+    </div>
+
+    <form [formGroup]="patientForm">
+        <div class="flex flex-column gap-3">
+            <div class="flex flex-row mobile:flex-column gap-3">
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'firstname', type: 'text'}"
+                />
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'lastname', type: 'text'}"
+                />
+            </div>
+            <div class="flex flex-row mobile:flex-column gap-3">
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'email', type: 'email'}"
+                />
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'phone', type: 'text'}"
+                />
+            </div>
+            <div class="flex flex-row mobile:flex-column gap-2">
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'address_street', type: 'text'}"
+                />
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'address_number', type: 'text'}"
+                />
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'address_postalcode', type: 'text'}"
+                />
+                <ng-container
+                        [ngTemplateOutlet]="formField"
+                        [ngTemplateOutletContext]="{$implicit: 'address_city', type: 'text'}"
+                />
+            </div>
+        </div>
+        <button
+                mat-flat-button
+                color="primary"
+                type="submit"
+                [disabled]="patientForm.invalid"
+                [mat-dialog-close]="patientForm.value">
+            Submit
+        </button>
+    </form>
+</div>
+
+
+<ng-template #formField let-controlName let-type="type">
+    <mat-form-field>
+        <mat-label>{{validatorMessageMap[controlName].title}}</mat-label>
+        <input matInput [type]="type" [formControl]='control(controlName)'>
+        <mat-error *ngIf="shouldShowError(controlName)">{{validatorMessageMap[controlName].error}}</mat-error>
+    </mat-form-field>
+</ng-template>

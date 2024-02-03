@@ -1,0 +1,95 @@
+.flex {
+  display: flex !important;
+}
+
+.flex-row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.justify-between {
+  justify-content: space-between !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.align-center {
+  align-items: center !important;
+}
+
+.align-start {
+  align-items: start !important;
+}
+
+.w-full {
+  width: 100% !important;
+}
+
+.gap-1 {
+  gap: 4px !important;
+}
+
+.gap-2 {
+  gap: 8px !important;
+}
+
+.gap-3 {
+  gap: 16px !important;
+}
+
+.gap-4 {
+  gap: 24px !important;
+}
+
+.flex-no-wrap {
+  white-space: nowrap;
+}
+
+.font-bold {
+  font-weight: 600 !important;
+}
+
+.mobile\:flex-column {
+  @media screen and (max-width: 900px){
+    flex-direction: column !important;
+  }
+}
+
+.mobile\:flex-row {
+  @media screen and (max-width: 900px){
+    flex-direction: row !important;
+  }
+}
+
+.mobile\:align-center {
+  @media screen and (max-width: 900px) {
+    align-items: center !important;
+  }
+}
+
+.mobile\:flex-no-wrap {
+  @media screen and (max-width: 900px){
+    flex-wrap: wrap !important;
+  }
+}
+
+.mobile\:gap-3 {
+  @media screen and (max-width: 900px){
+    gap: 16px !important;
+  }
+}
